@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            min-height: 100vh;
+        }
+
+        /* Banner Section */
+        .banner {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 31, 77, 0.6), rgba(0, 51, 102, 0.6)), url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb4.0.3&auto=format&fit=crop&w=2060&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .banner .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #0099ff, #0066cc);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .banner .btn:hover {
+            background: linear-gradient(135deg, #0066cc, #003366);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #001f4d;
+            border: 2px solid #001f4d;
+        }
+
+        .btn-secondary:hover {
+            background: #001f4d;
+            color: white;
+        }
+
+        /* Quotes Section */
+        .quotes-section {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #f8fbff;
+        }
+
+        .quote-card {
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 15px;
+
+            box-shadow: 0 4px 20px rgba(0, 31, 77, 0.1);
+            text-align: center;
+            flex: 1 1 250px;
+            max-width: 300px;
+            height: 250px;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .quote-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .quote-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 31, 77, 0.3);
+        }
+
+        .quote-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .quote-card p {
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .banner {
+                height: 60vh;
+                padding: 30px 20px;
+            }
+
+            .banner h1 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+
+            .banner p {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+                line-height: 1.5;
+            }
+
+            .banner .btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+                margin: 8px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .btn-container .btn {
+                width: 200px;
+                justify-content: center;
+            }
+
+            .quotes-section {
+                padding: 30px 20px;
+                gap: 15px;
+            }
+
+            .quote-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+                height: 200px;
+                padding: 15px;
+            }
+
+            .quote-card i {
+                font-size: 1.8rem;
+            }
+
+            .quote-card p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .banner {
+                height: 70vh;
+                padding: 20px 15px;
+            }
+
+            .banner h1 {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+
+            .banner p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .banner .btn {
+                padding: 14px 20px;
+                font-size: 0.9rem;
+                margin: 6px;
+                width: 200px;
+            }
+
+            .btn-container .btn {
+                width: 200px;
+            }
+
+            .quotes-section {
+                padding: 20px 15px;
+                gap: 12px;
+            }
+
+            .quote-card {
+                height: 180px;
+                padding: 12px;
+            }
+
+            .quote-card i {
+                font-size: 1.6rem;
+                margin-bottom: 8px;
+            }
+
+            .quote-card p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .banner {
+
+                height: 75vh;
+                padding: 15px 10px;
+            }
+
+            .banner h1 {
+                font-size: 1.6rem;
+            }
+
+            .banner p {
+                font-size: 0.95rem;
+            }
+
+            .banner .btn {
+                padding: 12px 18px;
+                font-size: 0.85rem;
+                width: 180px;
+            }
+
+            .btn-container .btn {
+                width: 180px;
+            }
+
+            .quote-card {
+                height: 160px;
+            }
+
+            .quote-card p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .banner h1 {
+                font-size: 1.4rem;
+            }
+
+            .banner p {
+                font-size: 0.9rem;
+            }
+
+            .banner .btn {
+                width: 160px;
+                padding: 10px 16px;
+            }
+
+            .btn-container .btn {
+                width: 160px;
+            }
+        }
+
+        /* Improve touch targets for mobile */
+        @media (max-width: 900px) {
+
+            .btn,
+            .quote-card {
+                min-height: 44px;
+                /* Minimum touch target size */
+            }
+        }
+
+        /* Prevent image layout shift */
+        @media (max-width: 900px) {
+            .quote-card {
+                aspect-ratio: 4/3;
+            }
+        }
+
+        /* Button Container for mobile */
+        @media (max-width: 900px) {
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <h1><i class="fas fa-cloud-sun"></i> Welcome to Weather App</h1>
+        <p>Your personalized weather dashboard. Search, save favorites, and view
+            forecasts in one
+            place.</p>
+        <div class="btn-container">
+            <a href="signup.php" class="btn"><i class="fas fa-user-plus"></i> Get
+                Started</a>
+            <a href="login.php" class="btn btn-secondary"><i class="fasfa-sign-in-alt"></i> Already have an account</a>
+        </div>
+    </div>
+    <!-- Quotes Section -->
+    <div class="quotes-section">
+        <div class="quote-card"
+            style="background-image:url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');">
+            <div class="quote-content">
+
+                <i class="fas fa-cloud"></i>
+                <p>"Weather is a great metaphor for life — sometimes it’s good, sometimes
+                    it’s bad, and
+                    there’s nothing much you can do about it but carry an umbrella."</p>
+            </div>
+        </div>
+        <div class="quote-card"
+            style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');">
+            <div class="quote-content">
+                <i class="fas fa-sun"></i>
+                <p>"Sunshine is delicious, rain is refreshing, wind braces us up, snow is
+                    exhilarating; there is
+                    no such thing as bad weather."</p>
+            </div>
+        </div>
+        <div class="quote-card"
+            style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');">
+            <div class="quote-content">
+                <i class="fas fa-wind"></i>
+                <p>"Climate is what we expect, weather is what we get."</p>
+            </div>
+        </div>
+        <div class="quote-card"
+            style="background-image:url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');">
+            <i class="fas fa-cloud-showers-heavy"></i>
+            <p>"The best thing one can do when it’s raining is to let it rain."</p>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
